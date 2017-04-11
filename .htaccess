@@ -1,0 +1,27 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+RewriteRule ^home/$ principal.php
+RewriteRule ^home$ principal.php
+
+RewriteRule ^listaFuncionario/$ funcionarios.php
+RewriteRule ^listaFuncionario$ funcionarios.php
+RewriteRule ^cadFuncionario/$ cadFuncionario.php
+RewriteRule ^cadFuncionario$ cadFuncionario.php
+RewriteRule ^categoriaFuncionario/$ categoriaFuncionario.php
+RewriteRule ^categoriaFuncionario$ categoriaFuncionario.php
+
+RewriteRule ^listaCliente/$ clientes.php
+RewriteRule ^listaCliente$ clientes.php
+RewriteRule ^cadCliente/$ cadCliente.php
+RewriteRule ^cadCliente$ cadCliente.php
+
+RewriteRule ^listaServico/$ servicos.php
+RewriteRule ^listaServico$ servicos.php
+RewriteRule ^cadServico/$ cadServico.php
+RewriteRule ^cadServico$ cadServico.php
+
+RewriteRule ^listaEvento/$ eventos.php
+RewriteRule ^listaEvento$ eventos.php
+RewriteRule ^cadEvento/$ cadEvento.php
+RewriteRule ^cadEvento$ cadEvento.php
