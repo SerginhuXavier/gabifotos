@@ -10,32 +10,32 @@
                 <ul class="nav side-menu">
 
                     <li>
-                        <a href="home"><i class="fa fa-home"></i> Home</a>
+                        <a href="<?php echo $url; ?>home"><i class="fa fa-home"></i> Home</a>
                     </li>
 
                     <li>
-                        <a href="listaServico"><i class="fa fa-camera-retro"></i> Serviços</a>
+                        <a href="<?php echo $url; ?>listaServico"><i class="fa fa-camera-retro"></i> Serviços</a>
                     </li>
                     <li>
                         <a><i class="fa fa-users"></i> Funcionários <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="cadFuncionario">Cadastrar</a></li>
-                            <li><a href="listaFuncionario">Listar</a></li>
-                            <li><a href="categoriaFuncionario">Categorias</a></li>
+                            <li><a href="<?php echo $url; ?>cadFuncionario">Cadastrar</a></li>
+                            <li><a href="<?php echo $url; ?>listaFuncionario">Listar</a></li>
+                            <li><a href="<?php echo $url; ?>categoriaFuncionario">Categorias</a></li>
                         </ul>
                     </li>
                     <li>
                         <a><i class="fa fa-users"></i> Clientes <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="cadCliente">Cadastrar</a></li>
-                            <li><a href="listaCliente">Listar</a></li>
+                            <li><a href="<?php echo $url; ?>cadCliente">Cadastrar</a></li>
+                            <li><a href="<?php echo $url; ?>listaCliente">Listar</a></li>
                         </ul>
                     </li>
                     <li>
                         <a><i class="fa fa-photo"></i> Eventos <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="cadEvento">Cadastrar</a></li>
-                            <li><a href="listaEvento">Listar</a></li>
+                            <li><a href="<?php echo $url; ?>cadEvento">Cadastrar</a></li>
+                            <li><a href="<?php echo $url; ?>listaEvento">Listar</a></li>
                         </ul>
                     </li>
                     <!--li>
