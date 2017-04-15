@@ -8,6 +8,8 @@ RewriteRule ^listaFuncionario/$ funcionarios.php
 RewriteRule ^listaFuncionario$ funcionarios.php
 RewriteRule ^cadFuncionario/$ cadFuncionario.php
 RewriteRule ^cadFuncionario$ cadFuncionario.php
+RewriteRule ^cadFuncionario/([0-9]+)/$ cadFuncionario.php?id=$1
+RewriteRule ^cadFuncionario/([0-9]+)$ cadFuncionario.php?id=$1
 RewriteRule ^categoriaFuncionario/$ categoriaFuncionario.php
 RewriteRule ^categoriaFuncionario$ categoriaFuncionario.php
 
