@@ -6,7 +6,7 @@ $funcionarios = $objFuncionario->listaFuncionarios();
 
 foreach ($funcionarios as $funcionario){
     echo '
-        <tr>
+        <tr id="linha'.$funcionario["idFuncionario"].'">
             <td>'.$funcionario["nome"].'</td>
             <td>'.$funcionario["email"].'</td>
             <td>'.$funcionario["telefone"].'</td>

@@ -100,7 +100,7 @@
                                                     <div class="has-feedback" id="form-group-categorias">
                                                         <div class="col-xs-12 form-group has-feedback" id="listaCategorias">
                                                             <?php
-                                                            require_once './listaCategorias.php';
+                                                            require_once './listaCategoriasCheck.php';
                                                             ?>
                                                         </div>
                                                         <span class="glyphicon form-control-feedback" id="icon-categorias" aria-hidden="true"></span>

@@ -15,7 +15,8 @@ $url = "http://".$_SERVER["HTTP_HOST"].'/'.$explodeUrl[1].'/';
 <!-- Font Awesome -->
 <link href="<?php echo $url; ?>tema/gentelella/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <!-- datatables -->
-<link href="<?php echo $url; ?>tema/gentelella/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="<?php echo $url; ?>tema/gentelella/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo $url; ?>tema/gentelella/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <!-- NProgress -->
 <link href="<?php echo $url; ?>tema/gentelella/vendors/nprogress/nprogress.css" rel="stylesheet">
 <!-- iCheck -->

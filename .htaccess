@@ -1,6 +1,8 @@
 Options +FollowSymLinks
 RewriteEngine On
 
+ErrorDocument 404 /cool404.html
+
 RewriteRule ^home/$ principal.php
 RewriteRule ^home$ principal.php
 

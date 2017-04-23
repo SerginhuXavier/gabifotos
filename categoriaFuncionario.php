@@ -24,24 +24,24 @@
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="x_panel">
                                     <div class="x_title">
-                                        <h2>Listagem de Funcionários </h2>
+                                        <h2>Listagem de Categorias </h2>
+                                        <p class="nav navbar-right panel_toolbox">
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalCadastroCategoria">Adicionar</button>
+                                        </p>
                                         <div class="clearfix"></div>
                                     </div>
-                                    <div class="x_content">
+                                    <div class="x_content" id="listaCategoria">
                                         <table id="datatable" class="table table-striped table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th>Nome</th>
-                                                    <th>Email</th>
-                                                    <th>Telefone</th>
-                                                    <th>Categorias</th>
+                                                    <th>Descrição</th>
                                                     <th>Editar</th>
                                                     <th>Excluir</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                include_once 'listaFuncionarios.php';
+                                                include_once 'listaCategorias.php';
                                                 ?>
                                             </tbody>
                                         </table>
@@ -58,42 +58,37 @@
 
             </div>
         </div>
-        <!-- modal de cadastro de servico -->
-        <div id="modalCadastroServico" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
 
+        <div class="modal fade" tabindex="-1" role="dialog" id="modalCadastroCategoria">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h4 class="modal-title" id="myModalLabel">Cadastro de Serviço</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Cadastrar Categoria</h4>
                     </div>
                     <div class="modal-body">
-                        <div style="padding: 5px 20px;">
-                            <form id="antoform" class="form-horizontal calender" role="form">
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">Descrição</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="descricao" placeholder="descricao">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                        <form class="form-horizontal form-label-left input_mask" id="formCategoria">
+                            <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-left" id="descricao" placeholder="Descrição">
+                                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                            </div>
+                        </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default antoclose" data-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-success antosubmit">Salvar</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="btnCadastrarCategoria">Save changes</button>
                     </div>
-                </div>
-            </div>
-        </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
-        <div id="modalExcluirFuncionario" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ExcluirFuncionarioLabel" aria-hidden="true">
+        <div id="modalExcluirCategoria" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ExcluirCategoriaLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
 
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h4 class="modal-title" id="ExcluirFuncionarioLabel">Excluir Funcionário</h4>
+                        <h4 class="modal-title" id="ExcluirCategoria">Excluir Categoria</h4>
                     </div>
                     <div class="modal-body">
                         <div style="padding: 5px 20px;">
@@ -102,19 +97,19 @@
                                 <div class="card-block">
                                     <h5 class="card-title bg-danger" style="padding: 8px;margin: 0 0 5px 0;"> <strong>ATENÇÃO!</strong><br /> Essa ação é irreversível</h5>
                                     <p class="card-text">
-                                        Você tem certeza que deseja excluir o funcionário: <span id="funcionarioNome"></span>
+                                        Você tem certeza que deseja excluir a categoria: <span id="CategoriaNome"></span>
                                     </p>
                                 </div>
                             </div>
                             <p>
-                                
+
                             </p>
-                            <input type="hidden" id="idFuncionarioExcluir" />
+                            <input type="hidden" id="idCategoriaExcluir" />
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default antoclose" data-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-danger" id="btnExcluirFuncionario">Excluir</button>
+                        <button type="button" class="btn btn-danger" id="btnExcluirCategoria">Excluir</button>
                     </div>
                 </div>
             </div>
@@ -122,25 +117,17 @@
 
         <script>
             $(document).ready(function () {
-                $("#modalExcluirFuncionario").on('show.bs.modal', function (e) {
-                    $("#funcionarioNome").html($(e.relatedTarget).data('name'));
-                    $("#idFuncionarioExcluir").val($(e.relatedTarget).data('id'));
-                });
+                var dt = ($("#datatable").length) ? $("#datatable").dataTable() : null;
 
-                $("#modalExcluirFuncionario").on('hide.bs.modal', function (e) {
-                    $("#funcionarioNome").html('');
-                    $("#idFuncionarioExcluir").val('');
-                });
+                $("#btnCadastrarCategoria").click(function () {
+                    var categoria = $("#formCategoria #descricao").val();
 
-
-                $("#btnExcluirFuncionario").click(function () {
-                    var idFuncionario = $("#idFuncionarioExcluir").val();
-
-                    $.post('control/controleFuncionario.php', {opcao: 'excluir', idFuncionario: idFuncionario},
+                    $.post('control/controleCategoria.php', {opcao: 'cadastrar', categoria: categoria},
                             function (r) {
-                                console.log(r);
-                                $("#modalExcluirFuncionario").modal('hide');
-                                $("#datatable tbody").load('listaFuncionarios.php');
+                                $("#listaCategoria").html("");
+                                $("#listaCategoria").load('listaCategorias.php');
+                                $("#formCategoria #descricao").val('');
+                                $("#modalCadastroCategoria").modal('hide');
                             });
                 });
             });

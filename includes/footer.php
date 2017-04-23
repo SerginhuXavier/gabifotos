@@ -1,4 +1,3 @@
-<?php echo $url; ?>
 <footer>
     <div class="pull-right">
         Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
@@ -11,8 +10,10 @@
 <!-- Bootstrap -->
 <script src="<?php echo $url; ?>tema/gentelella/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- datatables -->
-<script src="<?php echo $url; ?>tema/gentelella/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo $url; ?>tema/gentelella/vendors/datatables.net/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="<?php echo $url; ?>tema/gentelella/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!--<script src="<?php echo $url; ?>tema/gentelella/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>-->
+
 <!-- FastClick -->
 <script src="<?php echo $url; ?>tema/gentelella/vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
@@ -225,11 +226,3 @@
     });
 </script>
 <!-- /Ion.RangeSlider -->
-
-<!-- Datatables -->
-<script>
-    $(document).ready(function () {
-        ($('#datatable').length > 0) ? $('#datatable').dataTable() : '';
-    });
-</script>
-<!-- /Datatables -->

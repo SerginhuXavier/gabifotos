@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    dt = ($("#datatable").length) ? $("#datatable").dataTable({ responsive: true }) : null ;
 
     $("#btnCadastrarCategoria").click(function () {
         var categoria = $("#formCategoria #descricao").val();
@@ -6,7 +7,7 @@ $(document).ready(function () {
         $.post('control/controleCategoria.php', {opcao: 'cadastrar', categoria: categoria},
                 function (r) {
                     $("#listaCategorias").html("");
-                    $("#listaCategorias").load('listaCategorias.php', function () {
+                    $("#listaCategorias").load('listaCategoriasCheck.php', function () {
                         initializeDomElements();
                         Manager.handleVisibility(CONTAINER_ID, false);
                     });
@@ -23,7 +24,7 @@ $(document).ready(function () {
         } else {
             return false;
         }
-       
+
     });
 
     $("#btnCadFuncionario").click(function () {
@@ -91,5 +92,30 @@ $(document).ready(function () {
                         console.log(r);
                     });
         }
+    });
+
+    $("#modalExcluirFuncionario").on('show.bs.modal', function (e) {
+        $("#funcionarioNome").html($(e.relatedTarget).data('name'));
+        $("#idFuncionarioExcluir").val($(e.relatedTarget).data('id'));
+    });
+
+    $("#modalExcluirFuncionario").on('hide.bs.modal', function (e) {
+        $("#funcionarioNome").html('');
+        $("#idFuncionarioExcluir").val('');
+    });
+
+
+    $("#btnExcluirFuncionario").click(function () {
+        var idFuncionario = $("#idFuncionarioExcluir").val();
+
+        $.post('control/controleFuncionario.php', {opcao: 'excluir', idFuncionario: idFuncionario},
+                function (r) {
+                    console.log(r);
+                    $("#modalExcluirFuncionario").modal('hide');
+//                    $("#datatable tbody").load('listaFuncionarios.php');
+
+                    var posicao = dt.fnGetPosition($("#linha" + idFuncionario)[0]);
+                    dt.fnDeleteRow(posicao)
+                });
     });
 });

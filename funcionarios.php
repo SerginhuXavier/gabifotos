@@ -27,7 +27,7 @@
                                         <h2>Listagem de Funcionários </h2>
                                         <div class="clearfix"></div>
                                     </div>
-                                    <div class="x_content">
+                                    <div class="x_content table-responsive">
                                         <table id="datatable" class="table table-striped table-bordered">
                                             <thead>
                                                 <tr>
@@ -107,7 +107,7 @@
                                 </div>
                             </div>
                             <p>
-                                
+
                             </p>
                             <input type="hidden" id="idFuncionarioExcluir" />
                         </div>
@@ -120,30 +120,6 @@
             </div>
         </div>
 
-        <script>
-            $(document).ready(function () {
-                $("#modalExcluirFuncionario").on('show.bs.modal', function (e) {
-                    $("#funcionarioNome").html($(e.relatedTarget).data('name'));
-                    $("#idFuncionarioExcluir").val($(e.relatedTarget).data('id'));
-                });
-
-                $("#modalExcluirFuncionario").on('hide.bs.modal', function (e) {
-                    $("#funcionarioNome").html('');
-                    $("#idFuncionarioExcluir").val('');
-                });
-
-
-                $("#btnExcluirFuncionario").click(function () {
-                    var idFuncionario = $("#idFuncionarioExcluir").val();
-
-                    $.post('control/controleFuncionario.php', {opcao: 'excluir', idFuncionario: idFuncionario},
-                            function (r) {
-                                console.log(r);
-                                $("#modalExcluirFuncionario").modal('hide');
-                                $("#datatable tbody").load('listaFuncionarios.php');
-                            });
-                });
-            });
-        </script>
+        <script src="<?php echo $url; ?>js/funcionario.js"></script>
     </body>
 </html>
